@@ -178,7 +178,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 -- Name: shortens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.shortens_id_seq', 2, true);
+SELECT pg_catalog.setval('public.shortens_id_seq', 8, true);
 
 
 --
