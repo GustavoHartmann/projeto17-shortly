@@ -12,7 +12,7 @@ export async function shortenUrl(req, res) {
       [url, shortUrl, userId]
     );
 
-    res.send({ shortUrl }).status(201);
+    res.status(201).send({ shortUrl });
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
