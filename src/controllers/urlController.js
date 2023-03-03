@@ -12,7 +12,12 @@ export async function shortenUrl(req, res) {
       [url, shortUrl, userId]
     );
 
-    res.status(201).send({ shortUrl });
+    const shorten = await db.query(
+      `SELECT (id) FROM shortens WHERE "shortenedUrl" = $1`,
+      [shortUrl]
+    );
+
+    res.status(201).send({ id: shorten.rows[0].id, shortUrl });
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
