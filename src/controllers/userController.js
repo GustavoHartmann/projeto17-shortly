@@ -11,13 +11,25 @@ export async function getUser(req, res) {
       [userId]
     );
 
-    const shortenedUrl = await db.query(`SELECT * FROM shortens WHERE "userId" = $1`, [userId])
+    const shortenedUrl = await db.query(
+      `SELECT * FROM shortens WHERE "userId" = $1`,
+      [userId]
+    );
+
+    const shortUrls = [];
+
+    shortenedUrl.rows.forEach(c => shortUrls.push({
+        id: c.id,
+        shortUrl: c.shortenedUrl,
+        url: c.originalUrl,
+        visitCount: c.views
+    }));
 
     res.status(200).send({
       id: userId,
       name: user.rows[0].name,
       visitCount: visitCount.rows[0].sum,
-      shortenedUrls: shortenedUrl.rows,
+      shortenedUrls: shortUrls,
     });
   } catch (err) {
     console.log(err);
