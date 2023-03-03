@@ -146,12 +146,16 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 INSERT INTO public.sessions VALUES (1, 'bce5d008-454f-459f-89b0-b08db620eb15', 1, '2023-03-02 17:31:42.715274');
 INSERT INTO public.sessions VALUES (2, '0d1cdf50-4973-4892-91a3-ae24200029e1', 2, '2023-03-02 17:33:31.755435');
+INSERT INTO public.sessions VALUES (3, 'd4ecf4bf-87ef-4126-8c79-4aa276ea7441', 1, '2023-03-02 22:05:18.400123');
+INSERT INTO public.sessions VALUES (4, 'f93f4fd5-67cb-4b9b-9159-2415526540a6', 2, '2023-03-02 22:08:39.557266');
 
 
 --
 -- Data for Name: shortens; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.shortens VALUES (1, 'https://issoaquieumteste', 'Mb1u6tez', 0, 1, '2023-03-02 22:07:57.623644');
+INSERT INTO public.shortens VALUES (2, 'https://issoaquieumteste', 'iFLqfhkk', 0, 2, '2023-03-02 22:08:56.729046');
 
 
 --
@@ -167,14 +171,14 @@ INSERT INTO public.users VALUES (3, 'Pedro', 'pedro@driven.com.br', '$2b$10$nQ6g
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 2, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 
 
 --
 -- Name: shortens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.shortens_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shortens_id_seq', 2, true);
 
 
 --
