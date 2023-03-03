@@ -157,6 +157,7 @@ INSERT INTO public.sessions VALUES (4, 'f93f4fd5-67cb-4b9b-9159-2415526540a6', 2
 INSERT INTO public.shortens VALUES (2, 'https://issoaquieumteste', 'iFLqfhkk', 0, 2, '2023-03-02 22:08:56.729046');
 INSERT INTO public.shortens VALUES (1, 'https://issoaquieumteste', 'Mb1u6tez', 1, 1, '2023-03-02 22:07:57.623644');
 INSERT INTO public.shortens VALUES (9, 'https://google.com', 'g5H4-BLE', 3, 2, '2023-03-03 02:19:33.395948');
+INSERT INTO public.shortens VALUES (10, 'https://youtube.com', 'bsARAJuJ', 5, 2, '2023-03-03 02:49:55.944397');
 
 
 --
@@ -179,7 +180,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 -- Name: shortens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.shortens_id_seq', 9, true);
+SELECT pg_catalog.setval('public.shortens_id_seq', 10, true);
 
 
 --
