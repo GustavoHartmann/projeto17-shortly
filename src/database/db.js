@@ -6,7 +6,13 @@ const { Pool } = pg;
 
 const configDatabase = {
   connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  ...(process.env.NODE_ENV === "production" && {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  }),
 };
 
-export const db = new Pool(configDatabase);
+const connection = new Pool(configDatabase);
+
+export default connection;
