@@ -33,17 +33,39 @@ export async function getShortenedUrl(req, res) {
       [id]
     );
 
-    if(shortenedUrl.rowCount === 0) {
-        return res.sendStatus(404);
+    if (shortenedUrl.rowCount === 0) {
+      return res.sendStatus(404);
     }
 
-    res
-      .status(200)
-      .send({
-        id: shortenedUrl.rows[0].id,
-        shortUrl: shortenedUrl.rows[0].shortenedUrl,
-        url: shortenedUrl.rows[0].originalUrl,
-      });
+    res.status(200).send({
+      id: shortenedUrl.rows[0].id,
+      shortUrl: shortenedUrl.rows[0].shortenedUrl,
+      url: shortenedUrl.rows[0].originalUrl,
+    });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+}
+
+export async function openShortUrl(req, res) {
+  const { shortUrl } = req.params;
+
+  try {
+    const shortenedUrl = await db.query(
+      `SELECT * FROM shortens WHERE "shortenedUrl" = $1`,
+      [shortUrl]
+    );
+
+    if (shortenedUrl.rowCount === 0) {
+      return res.sendStatus(404);
+    }
+
+    await db.query(`UPDATE shortens SET views = views + 1 WHERE id = $1`, [
+      shortenedUrl.rows[0].id,
+    ]);
+    
+    res.redirect(shortenedUrl.rows[0].originalUrl);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
