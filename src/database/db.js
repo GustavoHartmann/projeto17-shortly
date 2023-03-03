@@ -13,6 +13,4 @@ const configDatabase = {
   }),
 };
 
-const connection = new Pool(configDatabase);
-
-export default connection;
+export const db = new Pool(configDatabase);
